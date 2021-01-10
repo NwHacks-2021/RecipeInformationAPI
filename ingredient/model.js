@@ -1,6 +1,4 @@
-module.exports = {
-  Ingredient
-}
+
 
 measurement = [
   "tablespoon",
@@ -121,7 +119,7 @@ measurement = [
   "\"s"
 ]
 
-class Ingredient {
+module.exports = class Ingredient {
   constructor(string) {
     var arr = string.split(" ")
     var wordOfMeasurementIndex = -1;

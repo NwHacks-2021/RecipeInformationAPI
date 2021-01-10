@@ -1,3 +1,7 @@
+module.exports = {
+  getAllIngredients
+}
+
 const axios = require("axios")
 const jsdom = require("jsdom")
 
@@ -94,6 +98,3 @@ function getAllIngredients(url) {
       console.log(error)
     })
 }
-
-getAllIngredients("https://tasty.co/recipe/chipotle-chili-and-cornbread-dumplings")
-  .then((ret) => console.log(ret))
