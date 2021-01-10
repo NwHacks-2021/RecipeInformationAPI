@@ -6,7 +6,6 @@ const numberUtil = require("../numberUtil.js")
 module.exports = function getAllIngredients(url) {
   return axios.get(url)
     .then(res => {
-      console.log(res)
 
       retVal = []
 
