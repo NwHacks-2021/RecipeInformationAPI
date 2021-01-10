@@ -1,4 +1,4 @@
-
+const mathUtil = require('../numberUtil')
 
 measurement = [
   "tablespoon",
@@ -131,15 +131,29 @@ module.exports = class Ingredient {
     }
 
     if (wordOfMeasurementIndex === -1) {
-      console.log("b")
-      this.quantity = arr.slice(0, 1).join(" ");
-      this.name = arr.slice(2).join(" ");
-      this.measurement = undefined;
+      try {
+        if (mathUtil.isNumber(arr[0])) {
 
+          this.quantity = mathUtil.toRational(arr[0]);
+          this.name = arr.slice(1).join(" ");
+          this.measurement = undefined;
+
+        } else {
+          this.name = arr.join(" ");
+        }
+      } catch (err) {
+        this.name = arr.join(" ");
+        console.log(arr[0])
+      }
     } else {
-      this.quantity = arr.slice(0, wordOfMeasurementIndex).join(" ")
-      this.name = arr.slice(wordOfMeasurementIndex + 1).join(" ")
-      this.measurement = arr[wordOfMeasurementIndex]
+      try {
+        this.quantity = mathUtil.toRational(arr[0])
+        this.name = arr.slice(wordOfMeasurementIndex + 1).join(" ")
+        this.measurement = arr[wordOfMeasurementIndex]
+      }
+      catch (e) {
+        console.log(arr.slice(0, wordOfMeasurementIndex).join(" "))
+      }
     }
   }
 }

@@ -6,6 +6,8 @@ const numberUtil = require("../numberUtil.js")
 module.exports = function getAllIngredients(url) {
   return axios.get(url)
     .then(res => {
+      console.log(res)
+
       retVal = []
 
       const {JSDOM} = jsdom
@@ -19,6 +21,6 @@ module.exports = function getAllIngredients(url) {
       return ingredientArr
     })
     .catch(error => {
-      console.log(error)
+      throw error
     })
 }

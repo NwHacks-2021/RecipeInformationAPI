@@ -13,6 +13,8 @@ router.get('/ingredient::url', function(req, res, next) {
   parseIngredient(req.params.url)
     .then(
       (rawArray) => {
+        console.log(rawArray)
+
         retVal = []
         for (var i = 0; i < rawArray.length; i++) {
           retVal.push(new Route(rawArray[i]))

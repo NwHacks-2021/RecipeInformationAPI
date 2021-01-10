@@ -27,6 +27,6 @@ module.exports = function getInstruction(url) {
       return retVal
     })
     .catch(error => {
-      console.log(error)
+      throw error;
     })
 }

@@ -4,9 +4,6 @@ module.exports = {
 }
 
 function isNumber(string) {
-  if (string === undefined) {
-    return false
-  }
   const letter = string.charAt(0)
   if (letter > '9' || letter < '0') {
     if (letter < '\u00BC' || letter > '\u00BE') {
@@ -19,13 +16,16 @@ function isNumber(string) {
 }
 
 function toRational(string) {
-  string = string + "/1"
-  var n;
-  var d;
-  var i;
-  return ([n,d]=string.split(/\D/),d)?(n||1)/d:'131111121234151357'[i=string.charCodeAt()%63%20]/-~'133689224444557777'[i]
+  try {
+    string = string + "/1"
+    var n;
+    var d;
+    var i;
+    return ([n, d] = string.split(/\D/), d) ? (n || 1) / d : '131111121234151357'[i = string.charCodeAt() % 63 % 20] / -~'133689224444557777'[i]
+  } catch (e) {
+    return 2;
+  }
 }
-
 /**
 console.log(toRational('¾'))
 console.log(toRational('3'))
