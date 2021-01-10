@@ -1,7 +1,7 @@
 const axios = require("axios")
 const jsdom = require("jsdom")
 
-function getInstruction(url) {
+module.exports = function getInstruction(url) {
   return axios.get(url)
     .then(res => {
       retVal = []
